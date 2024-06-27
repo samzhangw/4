@@ -139,5 +139,15 @@ def calculate():
     
     return jsonify(result)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+st.subheader('Best sellers', divider='orange')
+
+''
+''
+
+st.altair_chart(alt.Chart(df)
+    .mark_bar(orient='horizontal')
+    .encode(
+        x='units_sold',
+        y=alt.Y('item_name').sort('-x'),
+    ),
+    use_container_width=True)
